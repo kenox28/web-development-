@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="loginbyiquen.css" />
+    <title>LOGINIQUEN</title>
+  </head>
+  <body>
+    <div class="boxcenter" id="loginBox">
+      <a id="logo" href="https://www.facebook.com/iquen.marba.7">KENICH</a>
+      <form id="loginForm" method="post" action="login.php">
+        <div class="inputbox">
+          <input type="text" name="username" placeholder=" USERNAME:" />
+        </div>
+        <div class="inputbox">
+          <input type="password" name="password" placeholder=" PASSWORD:" />
+        </div>
+        <div class="i">
+          <label><input type="checkbox" />show password</label>
+          <a href="#">FORGOT PASSWORD</a>
+        </div>
+        <div>
+          <button type="submit" class="login">login</button>
+        </div>
+      </form>
+      <button id="createAccountLink">create account</button>
+    </div>
+    <div class="boxcenter" id="createAccountBox" style="display: none">
+      <div class="createAccountDiv">
+        <form id="createAccountForm" method="post" action="create_account.php">
+          <input type="text" name="newUsername" placeholder="Enter Username" />
+          <input
+            type="password"
+            name="newPassword"
+            placeholder="Enter Password"
+          />
+          <button type="submit" class="createAccountButton">
+            Create Account
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("createAccountLink")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          document.getElementById("loginBox").style.display = "none";
+          document.getElementById("createAccountBox").style.display = "flex";
+        });
+    </script>
+  </body>
+</html>
