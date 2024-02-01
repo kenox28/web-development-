@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      height: 100vh;
+      align-items: center;
+      width: 100%;
+    }
+    #change {
+      background: transparent;
+      backdrop-filter: blur(20px);
+
+      color: white;
+      width: 200px;
+      border-radius: 5px;
+      height: 150px;
+      font-size: 1.5rem;
+      transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    body {
+      background-size: cover;
+    }
+  </style>
+  <body>
+    <button id="change" onclick="bgchange()">change color</button>
+  </body>
+  <script>
+    const button = document.querySelector(".change");
+    const body = document.querySelector("body");
+    const color = ["url(codesnapPic/123.jpg)", "url(codesnapPic/wal2.jpg)"];
+
+    function bgchange() {
+      const colorindex = parseInt(Math.random() * color.length);
+      body.style.backgroundImage = color[colorindex];
+    }
+  </script>
+</html>
