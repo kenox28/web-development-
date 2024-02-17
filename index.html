@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>iquen l marba</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      height: 100%;
+      display: flex;
+      background-size: cover;
+      gap: 50px;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-content: center;
+    }
+    div {
+      margin-top: 120px;
+      height: 300px;
+      border: 1px solid black;
+      width: 300px;
+    }
+    button {
+      height: 50px;
+      width: 100px;
+      position: absolute;
+      top: 70%;
+      background: transparent;
+      font-size: large;
+      font-weight: bold;
+    }
+    img {
+      display: none;
+      position: absolute;
+      background-size: cover;
+      position: absolute;
+      height: 300px;
+      width: 300px;
+      filter: drop-shadow(0 0 15px black);
+      border-radius: 50px;
+    }
+    video {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+  </style>
+  <body>
+    <video
+      src="mylivewallpapers.com-Code-Is-Life.mp4"
+      autoplay
+      loop
+      muted
+    ></video>
+    <div>
+      <img
+        src="https://iencrypt.swell.life/62859eff76b5b923c9a888da2188b5e11598a3a7b267e6f6b61bcee983298c9f_SWELL_HIGH.gif"
+        alt="aiface"
+      />
+    </div>
+    <button onclick="run()">click here</button>
+  </body>
+  <script>
+    function run() {
+      let img = document.querySelector("img");
+
+      let synth = window.speechSynthesis;
+      var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+      var recognition = new SpeechRecognition();
+      let patterns = [
+        [
+          /hello|hi|hey/i,
+          ["Hello! I am a simple chatbot.", "Hi there!", "Hey!"],
+        ],
+        [
+          /how are you/i,
+          ["I am good, thank you!", "I'm doing well, how about you?"],
+        ],
+        [
+          /what is your name|who are you|name/i,
+          ["I am a chatbot.", "You can call me a chatbot."],
+        ],
+        [/quit|good bye|bye/i, ["Goodbye!", "See you later."]],
+        [
+          /music|song|play music|play song/i,
+          [
+            "Sure, playing some music for you!",
+            "Alright, let me play a song for you.",
+          ],
+        ],
+        [
+          /how are you doing today/i,
+          ["I'm doing well, thank you for asking!", "Feeling good today!"],
+        ],
+        [
+          /what can you do/i,
+          [
+            "I can assist you with information, answer questions, or just chat with you.",
+          ],
+        ],
+        [
+          /tell me a joke/i,
+          [
+            "Why don’t scientists trust atoms? Because they make up everything!",
+            "Sure, here's one: Why did the computer catch a cold? It left its Windows open.",
+          ],
+        ],
+        [
+          /weather|forecast/i,
+          ["I'm sorry, I don't have access to real-time weather information."],
+        ],
+        [/thank you/i, ["You're welcome!", "Anytime!"]],
+        [
+          /how old are you/i,
+          ["I don't have an age, as I am a computer program."],
+        ],
+        [
+          /who created you/i,
+          ["I was created by a student named [Student Name]."],
+        ],
+        [/close/i, ["Okay", "Alright", "Sure"]],
+        [
+          /open facebook|facebook|fbook/i,
+          ["Opening Facebook", "Okay, opening Facebook"],
+        ],
+        [/open youtube|youtube/i, ["Opening YouTube", "Okay, opening YouTube"]],
+        [
+          /open wife|wifey account|mahal facebook|wifey|wife/i,
+          ["Opening wife's account", "Okay, opening wife's account"],
+        ],
+        [/open chat gpt|gpt/i, ["Opening ChatGPT", "Okay, opening ChatGPT"]],
+        [
+          /open instagram|ig/i,
+          ["Opening Instagram", "Okay, opening Instagram"],
+        ],
+        [/open twitter/i, ["Opening Twitter", "Okay, opening Twitter"]],
+        [/open linkedin/i, ["Opening LinkedIn", "Okay, opening LinkedIn"]],
+        [/open snapchat/i, ["Opening Snapchat", "Okay, opening Snapchat"]],
+        [/open reddit/i, ["Opening Reddit", "Okay, opening Reddit"]],
+        [/open pinterest/i, ["Opening Pinterest", "Okay, opening Pinterest"]],
+        [/open tiktok/i, ["Opening TikTok", "Okay, opening TikTok"]],
+        [/open github/i, ["Opening GitHub", "Okay, opening GitHub"]],
+        [
+          /open stackoverflow/i,
+          ["Opening Stack Overflow", "Okay, opening Stack Overflow"],
+        ],
+        [/open amazon/i, ["Opening Amazon", "Okay, opening Amazon"]],
+        [/open ebay/i, ["Opening eBay", "Okay, opening eBay"]],
+        [/open netflix/i, ["Opening Netflix", "Okay, opening Netflix"]],
+        [/open spotify/i, ["Opening Spotify", "Okay, opening Spotify"]],
+      ];
+      function chatbot(transcript) {
+        for (let pattern of patterns) {
+          const regex = pattern[0];
+          const responses = pattern[1];
+          if (regex.test(transcript)) {
+            return responses[Math.floor(Math.random() * responses.length)];
+          }
+        }
+        return "I'm sorry, I don't understand.";
+      }
+      function chatbot(transcript) {
+        for (let pattern of patterns) {
+          const user = pattern[0];
+          const reply = pattern[1];
+          if (user.test(transcript)) {
+            return reply[Math.floor(Math.random() * reply.length)];
+          }
+        }
+        return "i cant understand you";
+      }
+
+      recognition.onstart = function () {
+        console.log("listening...");
+      };
+      recognition.onresult = function (event) {
+        img.style.display = "block";
+
+        let transcript = event.results[0][0].transcript;
+
+        let utterThis = new SpeechSynthesisUtterance(chatbot(transcript));
+
+        console.log(utterThis);
+
+        synth.speak(utterThis);
+
+        console.log("iquen: " + transcript);
+        setTimeout(() => {
+          img.style.display = "none";
+        }, 3000);
+      };
+
+      recognition.start();
+    }
+    // let img = document.querySelector("img");
+    // let button = document.querySelector("button");
+    // button.addEventListener("click", run);
+
+    // let synth = window.speechSynthesis;
+    // var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+    // var recognition = new SpeechRecognition();
+    // class Ai {
+    //   constractor() {
+    //     this.speach = speechSynthesis || webkitSpeechRecognition;
+    //     this.recognition = new SpeechRecognition();
+    //     this.chatbot = chatbot();
+    //     this.synth = window.speechSynthesis;
+    //     this.utterThis = new SpeechSynthesisUtterance(chatbot(transcript));
+    //   }
+
+    //   run() {
+    //     this.recognition.onstart = function () {
+    //       console.log("listening>>>>");
+    //     };
+    //     this.recognition.onresult = function (event) {
+    //       var transcript = event.results[0][0].transcript;
+    //       console.log(transcript);
+    //     };
+    //     recognition.start();
+    //   }
+    //   chatbot(transcript) {
+    //     for (let pattern of patterns) {
+    //       let userneeds = pattern[0];
+    //       let reply = pattern[1];
+    //       if (userneeds.test(transcript)) {
+    //         return reply[Math.floor(Math.random() * reply.length)];
+    //       }
+    //     }
+    //     return "i dont understand";
+    //   }
+    // }
+  </script>
+</html>
