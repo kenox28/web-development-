@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="login.css" />
+        <link
+            href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+            rel="stylesheet" />
+        <title>Document</title>
+    </head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: poppin;
+        }
+        body {
+            background-color: rgb(39, 36, 36);
+            max-width: 100%;
+            background-image: url(wolf.jpg);
+            background-size: cover;
+            justify-content: space-around;
+            display: flex;
+            flex-wrap: wrap;
+            padding-top: 50px;
+        }
+        .box {
+            background: rgba(242, 243, 245, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(2, 250, 110, 0.37);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            height: 600px;
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form {
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+                rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                rgba(0, 0, 0, 0.12) 0px 4px 6px,
+                rgba(2, 251, 110, 0.17) 0px 12px 13px,
+                rgba(5, 247, 102, 0.09) 0px -3px 5px;
+            height: 500px;
+            background: transparent;
+            backdrop-filter: blur(9px);
+            -webkit-backdrop-filter: blur(9px);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 500px;
+            width: 400px;
+            flex-wrap: wrap;
+        }
+
+        form input {
+            background: rgba(151, 246, 192, 0.25);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+                rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            height: 35px;
+            width: 300px;
+            color: rgb(2, 249, 154);
+            border-radius: 50px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+                rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            font-size: large;
+            font-weight: 400;
+            transition: all 0.2s ease-in-out;
+        }
+        input:hover {
+            transform: scale(1.1);
+        }
+        input#submit {
+            color: black;
+            height: 40px;
+            width: 200px;
+            background-color: rgb(2, 249, 154);
+            font-weight: 500;
+            cursor: pointer;
+        }
+        form input::placeholder {
+            color: rgb(2, 249, 154);
+            font-size: large;
+            font-weight: 400;
+        }
+
+        .box a {
+            color: rgb(2, 249, 154);
+
+            text-decoration: underline;
+            height: 30px;
+            background: transparent;
+        }
+        p {
+            color: rgb(2, 249, 154);
+        }
+        .login1 {
+            display: flex;
+            height: 50px;
+            width: 500px;
+            display: flex;
+            justify-content: center;
+        }
+        form h1 {
+            display: flex;
+            justify-content: center;
+            width: 300px;
+            color: rgb(2, 249, 154);
+            font-size: 4.5rem;
+            text-shadow: 1px 12px 8px rgba(0, 0, 0, 0.75);
+        }
+        div.box2 {
+            height: 600px;
+            width: 900px;
+            background: rgba(242, 243, 245, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 255, 128, 0.37);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+        }
+        .box2 h1 {
+            font-size: 7.5rem;
+            color: rgb(2, 249, 154);
+            text-shadow: -16px 15px 12px rgba(0, 0, 0, 1);
+        }
+        .box2 p {
+            font-size: large;
+            text-shadow: -16px 15px 12px rgba(0, 0, 0, 1);
+            font-weight: 600;
+            color: rgb(2, 249, 154);
+            text-decoration: underline wheat;
+            text-align: center;
+        }
+        video {
+            position: fixed;
+            z-index: -1;
+            top: 0;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <body>
+        <video src="../codesnapPic/skull.mp4" autoplay muted loop></video>
+
+        <div class="box2" data-aos="fade-left" data-aos-duration="1500">
+            <h1>I.M</h1>
+            <p>Empowering the Future with Code, by Iquen Marba!</p>
+        </div>
+        <div class="box" data-aos="fade-right" data-aos-duration="1500">
+            <br />
+            <form id="loginform">
+                <h1>Login</h1>
+                <input
+                    type="text"
+                    placeholder="Username:"
+                    id="username"
+                    required />
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Password:" />
+                <input type="submit" value="login" id="submit" required />
+                <div class="login1">
+                    <p>Dont have account yet?</p>
+                    <a href="createaccAct2.html">Create Account</a>
+                </div>
+                <div class="forgot">
+                    <a href="forgotpass.html">forgotpassword</a>
+                </div>
+            </form>
+        </div>
+
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- sweet alert -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <script>
+            AOS.init();
+            let accountuser =
+                JSON.parse(localStorage.getItem("username")) || [];
+            let accountpass =
+                JSON.parse(localStorage.getItem("password")) || [];
+            let accountemail = JSON.parse(localStorage.getItem("email")) || [];
+            document
+                .querySelector("#loginform")
+                .addEventListener("submit", valid);
+
+            function valid(event) {
+                event.preventDefault();
+                // console.log("loginruning");
+                let user = document.getElementById("username").value;
+                let pass = document.getElementById("password").value;
+
+                let accountuser = JSON.parse(localStorage.getItem("username"));
+                let accountpass = JSON.parse(localStorage.getItem("password"));
+                console.log(accountuser, accountpass);
+
+                let accindex = accountuser.indexOf(user);
+                let passindex = accountpass.indexOf(pass);
+
+                let userconfirm = accountuser[accindex];
+                let passconfirm = accountpass[passindex];
+
+                console.log(userconfirm);
+                console.log(passconfirm);
+
+                if (
+                    user == userconfirm &&
+                    pass == passconfirm &&
+                    accindex == passindex
+                ) {
+                    window.location.href = "../1/iquenproject1.html";
+                } else {
+                    swal("Invalid Account", "please try agin", "warning");
+                }
+            }
+        </script>
+    </body>
+</html>

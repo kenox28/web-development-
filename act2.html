@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div>
+            <div class="login">
+                <form id="createform">
+                    <input
+                        type="text"
+                        placeholder="createusername"
+                        autocomplete="username"
+                        id="createusername"
+                    />
+                    <br />
+                    <input type="text" id="surname" placeholder="lastname" />
+                    <br />
+                    <input type="text" id="age" placeholder="user age" />
+                    <br />
+                    <input
+                        type="password"
+                        placeholder="create password"
+                        id="createpassword"
+                        autocomplete="new-password"
+                    />
+                    <br />
+                    <input
+                        type="email"
+                        placeholder="email account"
+                        id="createemail"
+                        autocomplete="email"
+                    />
+                    <br />
+                    <input
+                        type="submit"
+                        value="createaccount"
+                        id="submitcreate"
+                    />
+                </form>
+            </div>
+            <div>
+                <form id="loginform">
+                    <input
+                        type="text"
+                        placeholder="username"
+                        autocomplete="username"
+                        required
+                        id="username"
+                    />
+                    <br />
+                    <input
+                        type="password"
+                        autocomplete="new-password"
+                        placeholder="password"
+                        required
+                        id="password"
+                    />
+                    <br />
+                    <input type="submit" id="submit" />
+                </form>
+            </div>
+            <div id="forgotform">
+                <form action="" id="forgot">
+                    <input
+                        type="text"
+                        id="forgotuser"
+                        autocomplete="username"
+                        placeholder="username"
+                        required
+                    />
+                    <br />
+                    <input
+                        type="password"
+                        id="forgotpass"
+                        autocomplete="new-password"
+                        placeholder="password"
+                        required
+                    />
+                    <br />
+                    <input
+                        type="password"
+                        id="newpass"
+                        autocomplete="new-password"
+                        placeholder="new password"
+                        required
+                    />
+
+                    <input type="submit" value="forgot pass" />
+                </form>
+            </div>
+        </div>
+    </body>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        // document
+        //     .querySelector("#createform")
+        //     .addEventListener("submit", createacc);
+
+        console.log("hello");
+
+        // function createacc(event) {
+        //     event.preventDefault();
+
+        //     let createuser = document.querySelector("#createusername").value;
+        //     let surname = document.querySelector("#surname").value;
+        //     let age = document.querySelector("#age").value;
+        //     let createpass = document.querySelector("#createpassword").value;
+        //     let createemail = document.querySelector("#createemail").value;
+
+        Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "iquenxzx@gmail.com",
+            Password: "E895E0C01C947388832D8B40E1AF9E374803",
+            To: createemail,
+            From: "iquenxzx@gmail.com",
+            Subject: "account",
+            Body: "succesfuly created an account",
+        }).then((message) =>
+            swal("Good job!", "succesfuly created account", "success")
+        );
+
+        //     // accountuser.push(createuser);
+        //     // accountpass.push(createpass);
+        //     // accountemail.push(createemail);
+
+        //     // console.log(accountuser, accountpass, accountemail);
+
+        //     // account.push({
+        //     //     user: createuser,
+        //     //     password: createpass,
+        //     //     email: createemail,
+        //     // });
+        //     // localStorage.setItem("user", JSON.stringify(account));
+
+        //     // console.log(account);
+        //     let useracc = localStorage.setItem("username", createuser);
+        //     let passacc = localStorage.setItem("password", createuser);
+        // }
+        // function forgotpass() {}
+
+        document.querySelector("#loginform").addEventListener("submit", valid);
+
+        function valid(event) {
+            event.preventDefault();
+            let accountuser = [];
+            let accountpass = [];
+            let accountemail = [];
+
+            // if (!storedAccounts) {
+            //     alert("No accounts found. Please create an account first.");
+            //     return;
+            // }
+
+            // Parse the stored account information
+            // let accounts = JSON.parse(storedAccounts);
+
+            // Get the entered username and password
+            let user = document.getElementById("username").value;
+            let pass = document.getElementById("password").value;
+
+            let dacc = JSON.parse(localStorage.getItem(accountuser));
+            let dpass = JSON.parse(localStorage.getItem(accountpass));
+
+            let accindex = accountuser.indexOf(user);
+            let passindex = accountuser.indexOf(pass);
+            console.log(accindex);
+            console.log(passindex);
+            if (accindex !== -1 && passindex !== -1 && accindex === passindex) {
+                alert("login succesfuly");
+            }
+            // Check if the entered username and password match any stored account
+            // let loggedInAccount = accounts.find(
+            //     (account) =>
+            //         account.createuser === user && account.createpass === pass
+            // );
+
+            // If an account is found, log in and redirect to the desired page
+            // if () {
+            //     alert("Login successful");
+            //     window.location.href = "../1/iquenproject1.html";
+            // } else {
+            //     alert("Invalid username or password");
+            // }
+        }
+        function forgot(event) {
+            event.preventDefault();
+            let forguser = document.querySelector("forguser").value;
+            let forgpass = document.querySelector("forgpass").value;
+
+            let;
+        }
+    </script>
+</html>

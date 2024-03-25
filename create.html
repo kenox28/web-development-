@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <form id="createform">
+            <input
+                type="text"
+                placeholder="createusername"
+                autocomplete="username"
+                id="createusername"
+            />
+            <br />
+            <input
+                type="password"
+                placeholder="create password"
+                id="createpassword"
+                autocomplete="new-password"
+            />
+            <br />
+            <input
+                type="email"
+                placeholder="email account"
+                id="createemail"
+                autocomplete="email"
+            />
+            <br />
+            <input type="submit" id="submitcreate" />
+        </form>
+    </body>
+    <script>
+        document
+            .querySelector("#createform")
+            .addEventListener("submit", createacc);
+        let accountuser = [];
+        let accountpass = [];
+        let accountemail = [];
+
+        function createacc(event) {
+            event.preventDefault();
+
+            let createuser = document.querySelector("#createusername").value;
+            let createpass = document.querySelector("#createpassword").value;
+            let createemail = document.querySelector("#createemail").value;
+            accountuser.push(createuser);
+            accountpass.push(createpass);
+            accountemail.push(createemail);
+            localStorage.setItem("username", JSON.stringify(accountuser));
+            localStorage.setItem("password", JSON.stringify(accountpass));
+            localStorage.setItem("email", JSON.stringify(accountemail));
+            console.log(localStorage);
+        }
+    </script>
+</html>

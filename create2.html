@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="login">
+            <form id="createform">
+                <input
+                    type="text"
+                    placeholder="createusername"
+                    autocomplete="username"
+                    id="createusername"
+                />
+                <br />
+                <input type="text" id="surname" placeholder="lastname" />
+                <br />
+                <input type="text" id="age" placeholder="user age" />
+                <br />
+                <input
+                    type="password"
+                    placeholder="create password"
+                    id="createpassword"
+                    autocomplete="new-password"
+                />
+                <br />
+                <input
+                    type="email"
+                    placeholder="email account"
+                    id="createemail"
+                    autocomplete="email"
+                />
+                <br />
+                <input type="submit" value="createaccount" id="submitcreate" />
+            </form>
+        </div>
+        <div>
+            <form id="loginform">
+                <input
+                    type="text"
+                    placeholder="username"
+                    autocomplete="username"
+                    required
+                    id="username"
+                />
+                <br />
+                <input
+                    type="password"
+                    autocomplete="new-password"
+                    placeholder="password"
+                    required
+                    id="password"
+                />
+                <br />
+                <input type="submit" id="submit" />
+            </form>
+        </div>
+    </body>
+    <script>
+        document
+            .querySelector("#createform")
+            .addEventListener("submit", createacc);
+        let accountuser = JSON.parse(localStorage.getItem("username")) || [];
+        let accountpass = JSON.parse(localStorage.getItem("password")) || [];
+        let accountemail = JSON.parse(localStorage.getItem("email")) || [];
+
+        function createacc(event1) {
+            console.log("hellow");
+            event1.preventDefault();
+
+            let createuser = document.querySelector("#createusername").value;
+            let createpass = document.querySelector("#createpassword").value;
+            let createemail = document.querySelector("#createemail").value;
+
+            // let au = accountuser.indexOf(createuser);
+            // let ap = accountpass.indexOf(createpass);
+            // let ae = accountemail.indexOf(createemail);
+            // accountuser.push(createuser);
+            // accountpass.push(createpass);
+            // accountemail.push(createemail);
+            // let datau, datap, datae;
+            // datau = localStorage.setItem(
+            //     "username",
+            //     JSON.stringify(accountuser)
+            // );
+            // datap = localStorage.setItem(
+            //     "password",
+            //     JSON.stringify(accountpass)
+            // );
+            // datae = localStorage.setItem("email", JSON.stringify(accountemail));
+            let finda, findp, finde;
+            finda = JSON.parse(localStorage.getItem("username"));
+            findp = JSON.parse(localStorage.getItem("password"));
+            finde = JSON.parse(localStorage.getItem("email"));
+
+            console.log(finda + findp + finde);
+            let dataindexu = accountuser.indexOf(createuser);
+            let dataindexp = accountpass.indexOf(createpass);
+            let dataindee = accountemail.indexOf(createemail);
+
+            let datastringu = accountuser[dataindexu];
+            let datastringp = accountpass[dataindexu];
+            let datastringe = accountemail[dataindexu];
+            // console.log(datastringu);
+            // console.log(datastringp);
+            // console.log(datastringe);
+
+            if (createuser == datastringu) {
+                alert("username already exist");
+            } else if (createpass == datastringp) {
+                alert("password already exist");
+            } else if (createemail == datastringe) {
+                alert("email already exist");
+            } else if (
+                createuser == "" ||
+                createpass == "" ||
+                createemail == ""
+            ) {
+                alert("fill the input");
+                return;
+            } else {
+                accountuser.push(createuser);
+                accountpass.push(createpass);
+                accountemail.push(createemail);
+                let datau, datap, datae;
+                datau = localStorage.setItem(
+                    "username",
+                    JSON.stringify(accountuser)
+                );
+                datap = localStorage.setItem(
+                    "password",
+                    JSON.stringify(accountpass)
+                );
+                datae = localStorage.setItem(
+                    "email",
+                    JSON.stringify(accountemail)
+                );
+
+                Email.send({
+                    Host: "smtp.elasticemail.com",
+                    Username: "iquenxzx@gmail.com",
+                    Password: "E895E0C01C947388832D8B40E1AF9E374803",
+                    To: createemail,
+                    From: "iquenxzx@gmail.com",
+                    Subject: "account",
+                    Body: "succesfuly created an account",
+                }).then((message) =>
+                    swal("Good job!", "succesfuly created account", "success")
+                );
+                console.log(localStorage);
+            }
+        }
+        // document.querySelector("#loginform").addEventListener("submit", valid);
+
+        // function valid(event) {
+        //     event.preventDefault();
+        //     console.log("loginruning");
+        //     let user = document.getElementById("username").value;
+        //     let pass = document.getElementById("password").value;
+
+        //     // Retrieve user data from localStorage using the correct keys
+        //     let dacc = JSON.parse(localStorage.getItem("username"));
+        //     let dpass = JSON.parse(localStorage.getItem("password"));
+        //     // let demail = JSON.parse(localStorage.getItem("email")); // This line is commented out as it's not used in the current implementation
+        //     console.log(dacc, dpass);
+
+        //     let accindex = dacc.indexOf(user);
+        //     let passindex = dpass.indexOf(pass);
+
+        //     // Retrieve the corresponding username and password from the arrays
+        //     let userconfirm = dacc[accindex];
+        //     let passconfirm = dpass[passindex];
+
+        //     console.log(userconfirm);
+        //     console.log(passconfirm);
+
+        //     // Check if the entered username and password match the stored credentials
+        //     if (user == userconfirm && pass == passconfirm) {
+        //         alert("Login successful");
+        //     } else {
+        //         alert("Login failed");
+        //     }
+        // }
+    </script>
+</html>
